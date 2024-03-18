@@ -13,6 +13,9 @@ read commit_message
 # Commit changes with the provided message
 git commit -m "$commit_message"
 
+# Rebase from main
+git rebase origin/main
+
 # Push changes to the remote repository
 git push --set-upstream origin romain
 
