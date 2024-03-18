@@ -8,4 +8,14 @@ Pour tester l'image avec le site, utilisé les commandes suivantes :
 
 Ensuite, il suffit de lancer un navigateur et de rentrer localhost:8080
 
+# Sql
+Pour créer l'image avec le sql, utilisé la commande suivante :  
+- `docker build -t <nom_image> .` dans le dossier Sql
+
 # K3s
+Dans le dossier K3s, utilisé les commandes suivantes :
+```
+kubectl apply -f website-deployment.yaml
+kubectl apply -f mysql-deployment.yaml
+kubectl apply -f mysql-service.yaml
+```
