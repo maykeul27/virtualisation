@@ -1,31 +1,47 @@
-const searchInput = document.getElementById('search-input'); // Récupère le champ de recherche
-const linksList = document.getElementById('links-list'); // Récupère la liste des liens Git
+const searchInput = document.getElementById('search-input'); // Get the search input field
+const linksList = document.getElementById('links-list'); // Get the links list element
 
-// Remplacez ce tableau par les liens Git réels provenant de votre base de données
-const gitLinks = [
-    { title: 'Project 1', url: 'https://github.com/user/project1' },
-    { title: 'Project 2', url: 'https://github.com/user/project2' },
-    { title: 'Project 3', url: 'https://github.com/user/project3' },
-];
+// Function to fetch data from the MySQL database
+function fetchData() {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Parse the JSON response
+                const data = JSON.parse(xhr.responseText);
+                // Display the links
+                displayLinks(data);
+            } else {
+                console.error('Error fetching data:', xhr.statusText);
+            }
+        }
+    };
+    xhr.open('GET', 'http://mysql:3306/fetch-links'); // Assuming the MySQL service is exposed on port 3306
+    xhr.send();
+}
 
-function displayLinks() {
-    linksList.innerHTML = ''; // Vide la liste des liens
-    gitLinks.forEach((link) => {
-        const li = document.createElement('li'); // Crée un nouvel élément de liste
-        const linkElement = document.createElement('a'); // Crée un nouvel élément de lien
-        linkElement.textContent = link.title; // Définit le texte du lien
-        linkElement.href = link.url; // Définit l'URL du lien
-        li.appendChild(linkElement); // Ajoute le lien à l'élément de liste
-        linksList.appendChild(li); // Ajoute l'élément de liste à la liste des liens
+// Function to display links on the webpage
+function displayLinks(data) {
+    linksList.innerHTML = ''; // Clear the links list
+    data.forEach((link) => {
+        const li = document.createElement('li'); // Create a new list item element
+        const linkElement = document.createElement('a'); // Create a new link element
+        linkElement.textContent = link.name; // Set the link text
+        linkElement.href = link.link; // Set the link URL
+        li.appendChild(linkElement); // Add the link to the list item
+        linksList.appendChild(li); // Add the list item to the links list
     });
 }
 
+// Function to filter links based on search input
 function filterLinks() {
-    const searchTerm = searchInput.value.toLowerCase(); // Récupère la valeur du champ de recherche
-    const filteredLinks = gitLinks.filter((link) => link.title.toLowerCase().includes(searchTerm)); // Filtre les liens en fonction du terme de recherche
-    displayLinks(filteredLinks); // Affiche les liens filtrés
+    const searchTerm = searchInput.value.toLowerCase(); // Get the search term
+    const filteredLinks = gitLinks.filter((link) => link.name.toLowerCase().includes(searchTerm)); // Filter links based on the search term
+    displayLinks(filteredLinks); // Display the filtered links
 }
 
-searchInput.addEventListener('input', filterLinks); // Ajoute un écouteur d'événements sur le champ de recherche pour filtrer les liens lors de la saisie
+// Event listener for search input
+searchInput.addEventListener('input', filterLinks);
 
-displayLinks(); // Affiche les liens Git au chargement de la page
+// Fetch data when the page loads
+window.addEventListener('load', fetchData);

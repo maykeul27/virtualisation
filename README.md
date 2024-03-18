@@ -7,3 +7,5 @@ Pour tester l'image avec le site, utilisé les commandes suivantes :
 - `docker run -d -p 8080:80 --name <nom_container> <nom_image>`
 
 Ensuite, il suffit de lancer un navigateur et de rentrer localhost:8080
+
+# K3s
