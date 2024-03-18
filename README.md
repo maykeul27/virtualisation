@@ -18,8 +18,6 @@ docker build -t sql .
 
 # K3s
 Dans le dossier K3s, utilisé les commandes suivantes :
-```kubernetes
-kubectl apply -f website-deployment.yaml
-kubectl apply -f mysql-deployment.yaml
-kubectl apply -f mysql-service.yaml
+```sh
+./apply.sh
 ```
