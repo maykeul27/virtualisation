@@ -1,3 +1,3 @@
-kubectl delete deploy website
-kubectl delete deploy mysql
-kubectl delete service mysql
+kubectl delete -f website-deployment.yaml
+kubectl delete -f mysql-deployment.yaml
+kubectl delete -f mysql-service.yaml

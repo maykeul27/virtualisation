@@ -17,8 +17,10 @@ spec:
         image: romainc0/sql:latest
         env:
         - name: MYSQL_USER
-          value: user
+          value: "user"
         - name: MYSQL_PASSWORD
-          value: mdp
+          value: "mdp"
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
+          value: "true"
         ports:
         - containerPort: 3306
