@@ -1,8 +1,8 @@
 CREATE DATABASE IF NOT EXISTS db_link;
 USE db_link;
 
-CREATE USER 'user'@'%' IDENTIFIED BY 'mdp';
-GRANT ALL PRIVILEGES ON db_link.* TO 'user'@'%';
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'mdp';
+GRANT ALL PRIVILEGES ON db_link.* TO 'user'@'localhost';
 
 CREATE TABLE IF NOT EXISTS links (
     id INT AUTO_INCREMENT PRIMARY KEY,
