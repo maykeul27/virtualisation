@@ -17,7 +17,14 @@ docker build -t sql .
 ```
 
 # K3s
-Dans le dossier K3s, utilisé les commandes suivantes :
+Dans le dossier K3s, utilisé la commande suivante pour appliquer les fichiers :
 ```sh
 ./apply.sh
+```
+
+
+Toujours dans le même dossier, si besoin utiliser la commande suivant pour supprimer les deployment et services :
+
+```sh
+./delete.sh
 ```
