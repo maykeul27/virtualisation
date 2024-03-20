@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: website
-        image: site:latest
+        image: romainc0/site:latest
         ports:
         - containerPort: 80
