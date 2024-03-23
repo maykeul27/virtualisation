@@ -28,3 +28,25 @@ Toujours dans le même dossier, si besoin utiliser la commande suivant pour supp
 ```sh
 ./delete.sh
 ```
+
+Pour l'accès au site suivre les instructions suivantes :
+
+Soit utilisé l'adresse ip externe récupérer en faisant :
+```
+kubectl get services
+```
+
+Soit en utilisant l'ingress :
+- Sur Linux: modifier le `/etc/hosts` fichier et ajouter les valeurs pour : 
+
+`ADDRESS     HOSTS`
+
+- Sur Windows : modifier le fichier `c:\windows\system32\drivers\etc\hosts` et ajouter
+
+```
+'external_ip' website.info
+``` 
+
+Il est possible de tester avec l'url suivante: 
+
+http://website.info/
