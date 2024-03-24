@@ -1,22 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: website
+  name: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: website
+      app: frontend
   template:
     metadata:
       labels:
-        app: website
+        app: frontend
     spec:
       containers:
       - name: frontend
-        image: romainc0/website:frontend1.0
+        image: romainc0/website:frontend1.4
         ports:
         - containerPort: 80
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
       - name: backend
         image: romainc0/website:backend1.1
         command: ["node", "server.js"]
