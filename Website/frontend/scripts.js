@@ -1,4 +1,3 @@
-// New 1.0
 const searchInput = document.getElementById('search-input'); // Get the search input field
 const linksList = document.getElementById('links-list'); // Get the links list element
 
@@ -17,9 +16,11 @@ function fetchData() {
             }
         }
     };
-    xhr.open('GET', '/fetch-links'); // Request to the Node.js server's endpoint
+    // Update the URL to use the Kubernetes service name for the backend
+    xhr.open('GET', 'http://backend-service:3000/fetch-links');
     xhr.send();
 }
+
 
 // Function to display links on the webpage
 function displayLinks(data) {
