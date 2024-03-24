@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: romainc0/sql:latest
+        image: romainc0/website:sql1.2
         env:
         - name: MYSQL_USER
           value: "user"
