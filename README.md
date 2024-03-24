@@ -2,7 +2,7 @@
 Student Project to improve our understanding of DevOps Techs
 
 # Site
-Pour tester l'image avec le site, utilisé les commandes suivantes dans le dossier Website :  
+Pour tester l'image avec le site, utilisé les commandes suivantes dans le dossier Website/frontend :  
 ```docker
 docker build -t site .
 docker run -d -p 8080:80 --name links site
