@@ -1,13 +1,12 @@
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const app = express();
 
 const connection = mysql.createConnection({
   host: 'mysql-service',
   user: 'user',
   password: 'mdp',
-  database: 'db_link',
-  authPlugin: 'caching_sha2_password'
+  database: 'db_link'
 });
 
 connection.connect();

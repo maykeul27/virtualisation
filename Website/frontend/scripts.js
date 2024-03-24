@@ -1,3 +1,4 @@
+// New 1.0
 const searchInput = document.getElementById('search-input'); // Get the search input field
 const linksList = document.getElementById('links-list'); // Get the links list element
 
